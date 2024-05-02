@@ -3,23 +3,33 @@ import React, { useState } from "react";
 function Counter() {
   // ? Inside Class based component
 
+  // class Counter extends React.component{
   //   constructor(){
   //     super();
-  //     this.state = {
+     
+  //     this.state = { 
   //       count: 0
+  //       count2: 3
   //     }
   //   }
 
+  //   this.state { 
+  //     ...this.state, count: this.state.count + 1
+  //    }
+
   // eventHandler(){
   //   setState({count : this.state.count + 1})
-  // }
+  //   }
+  // } 
 
   // ? Inside Functional component
 
   // Initialize a state variable 'count' with a default value of 0
   // setCount is the function used to update the value of 'count'
   const [count, setCount] = useState(0);
+  // const [count, setCount] = [variable = 0, setVariable];
 
+  console.log("Inside function component", count);
   // let count = 0;
   // Function to handle the click event on the button
   function handleClick() {

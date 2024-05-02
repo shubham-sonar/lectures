@@ -12,10 +12,14 @@ import Library from "./components/class-comp/Library.js";
 import ColorCycle from "./components/class-comp/ColorCycle.js";
 import InlineStylingComponent from "./components/css-style/InlineStylingComponent.js";
 import CSSStylesheetComponent from "./components/css-style/CSSStylesheetComponent.js";
+import HooksApp from "./HooksApp.js";
 
 // Define a functional component called App
 function App() {
   // Render the component using JSX
+
+  //! Return Statement for learning basics
+
   return (
     <div>
       <div className="App">
@@ -24,7 +28,7 @@ function App() {
           {/* <DefaultApp/> */}
 
           {/* Counter using useState */}
-          <Counter />
+          {/* <Counter /> */}
 
           {/* JSX first file */}
           {/* <J1basics/> */}
@@ -48,7 +52,9 @@ function App() {
           {/* CSS styling the React app */}
           {/* <InlineStylingComponent /> */}
           {/* <CSSStylesheetComponent /> */}
-          
+
+          {/* All Hooks here */}
+          <HooksApp />
         </header>
         <div style={{ height: "150px" }}></div>
       </div>
