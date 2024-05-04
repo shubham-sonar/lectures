@@ -1,19 +1,16 @@
 import './App.css';
 import React, { useReducer } from 'react';
 // import CompC from './components/all-hooks/useContext/CompC';
-// import CDMuseEffect from './components/all-hooks/useEffect/CDMuseEffect';
-// import ConditionalUseEffect from './components/all-hooks/useEffect/ConditionalUseEffect';
-// import CWUuseEffect from './components/all-hooks/useEffect/CWUuseEffect';
-// import DataFetchingUseEffect from './components/all-hooks/useEffect/DataFetchingUseEffect';
-// import IncorrectDependency from './components/all-hooks/useEffect/IncorrectDependency';
-// import UseEffectCounter from './components/all-hooks/useEffect/UseEffectCounter';
-// import Counter from './components/all-hooks/useEffect/UseEffectCounter';
+import CDMuseEffect from './components/all-hooks/useEffect/CDMuseEffect';
+import ConditionalUseEffect from './components/all-hooks/useEffect/ConditionalUseEffect';
+import CWUuseEffect from './components/all-hooks/useEffect/CWUuseEffect';
+import DataFetchingUseEffect from './components/all-hooks/useEffect/DataFetchingUseEffect';
+import IncorrectDependency from './components/all-hooks/useEffect/IncorrectDependency';
+import UseEffectCounter from './components/all-hooks/useEffect/UseEffectCounter';
+import Counter from './components/all-hooks/useEffect/UseEffectCounter';
 // import ComplexReducer from './components/all-hooks/useReducer/ComplexReducer';
 // import MultipleUseReducer from './components/all-hooks/useReducer/MultipleUseReducer';
 // import SimpleUseReducer from './components/all-hooks/useReducer/SimpleUseReducer';
-// import ArrayToUsestate from './components/all-hooks/useState/ArrayToUsestate';
-// import HooksCounterTwo from './components/all-hooks/useState/HooksCounterTwo';
-// import ObjectToUsestate from './components/all-hooks/useState/ObjectToUsestate';
 // import ComponentB from './components/all-hooks/ReducerAndContext/ComponentB';
 // import ComponentD from './components/all-hooks/ReducerAndContext/ComponentD';
 // import ComponentE from './components/all-hooks/ReducerAndContext/ComponentE';
@@ -69,27 +66,7 @@ function HooksApp() {
       {/* <ObjectToUsestate /> */}
 
       {/* 5 - Passing the Array as argument to useState() method then manupulating it */}
-      <ArrayToUsestate />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {/* <ArrayToUsestate /> */}
 
       {/*  6 - Counter ex using useEffect Hook */}
       {/* <UseEffectCounter /> */}
@@ -107,7 +84,22 @@ function HooksApp() {
       {/* <IncorrectDependency /> */}
 
       {/* 12 - useEffect -- Fertching the data using the useEffect and Axios */}
-      {/* <DataFetchingUseEffect /> */}
+      <DataFetchingUseEffect />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* 13 - useContext -- normal context use and useContext version */}
       {/* <UserContext.Provider value={'Shubham'}>
