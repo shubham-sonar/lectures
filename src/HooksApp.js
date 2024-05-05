@@ -1,6 +1,5 @@
 import './App.css';
-import React, { useReducer } from 'react';
-// import CompC from './components/all-hooks/useContext/CompC';
+import React, { useReducer, useContext } from 'react';
 import CDMuseEffect from './components/all-hooks/useEffect/CDMuseEffect';
 import ConditionalUseEffect from './components/all-hooks/useEffect/ConditionalUseEffect';
 import CWUuseEffect from './components/all-hooks/useEffect/CWUuseEffect';
@@ -8,12 +7,12 @@ import DataFetchingUseEffect from './components/all-hooks/useEffect/DataFetching
 import IncorrectDependency from './components/all-hooks/useEffect/IncorrectDependency';
 import UseEffectCounter from './components/all-hooks/useEffect/UseEffectCounter';
 import Counter from './components/all-hooks/useEffect/UseEffectCounter';
-// import ComplexReducer from './components/all-hooks/useReducer/ComplexReducer';
-// import MultipleUseReducer from './components/all-hooks/useReducer/MultipleUseReducer';
-// import SimpleUseReducer from './components/all-hooks/useReducer/SimpleUseReducer';
-// import ComponentB from './components/all-hooks/ReducerAndContext/ComponentB';
-// import ComponentD from './components/all-hooks/ReducerAndContext/ComponentD';
-// import ComponentE from './components/all-hooks/ReducerAndContext/ComponentE';
+import ComplexReducer from './components/all-hooks/useReducer/ComplexReducer.js';
+import MultipleUseReducer from './components/all-hooks/useReducer/MultipleUseReducer.js';
+import SimpleUseReducer from './components/all-hooks/useReducer/SimpleUseReducer.js';
+// import ComponentB from './components/all-hooks/ReducerAndContext/ComponentB.js';
+// import ComponentD from './components/all-hooks/ReducerAndContext/ComponentD.js';
+// import ComponentE from './components/all-hooks/ReducerAndContext/ComponentE.js';
 // import SimpleFetch from './components/all-hooks/ReducerFetch/SimpleFetch';
 // import ComplexFetch from './components/all-hooks/ReducerFetch/ComplexFetch';
 // import SimpleUseCallback from './components/all-hooks/useCallback/SimpleUseCallback';
@@ -28,26 +27,27 @@ import HooksCounter from './components/all-hooks/useState/HooksCounter';
 import HooksCounterTwo from './components/all-hooks/useState/HooksCounterTwo';
 import ObjectToUsestate from './components/all-hooks/useState/ObjectToUsestate';
 import ArrayToUsestate from './components/all-hooks/useState/ArrayToUsestate';
+// import CompC from './components/all-hooks/useContext/CompC.js';
 
 
-export const UserContext = React.createContext();
-export const ChannelContext = React.createContext();
-export const ReducerContext = React.createContext();
+// export const UserContext = React.createContext();
+// export const ChannelContext = React.createContext();
+// export const ReducerContext = React.createContext();
 
 // Below code is for useReducer + useContext example
-const initialState = 0;
-const reducer = (state, action) => {
-  switch (action) {
-    case 'increment':
-      return state + 1;
-    case 'decrement':
-      return state - 1;
-    case 'reset':
-      return initialState;
-    default:
-      return state;
-  }
-}
+// const initialState = 0;
+// const reducer = (state, action) => {
+//   switch (action) {
+//     case 'increment':
+//       return state + 1;
+//     case 'decrement':
+//       return state - 1;
+//     case 'reset':
+//       return initialState;
+//     default:
+//       return state;
+//   }
+// }
 
 
 function HooksApp() {
@@ -84,22 +84,7 @@ function HooksApp() {
       {/* <IncorrectDependency /> */}
 
       {/* 12 - useEffect -- Fertching the data using the useEffect and Axios */}
-      <DataFetchingUseEffect />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {/* <DataFetchingUseEffect /> */}
 
       {/* 13 - useContext -- normal context use and useContext version */}
       {/* <UserContext.Provider value={'Shubham'}>
@@ -123,7 +108,21 @@ function HooksApp() {
         <ComponentB />
         <ComponentD />
         <ComponentE />
-      .</ReducerContext.Provider> */}
+        </ReducerContext.Provider> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* 18 - useEffect and useState -- To fetch the data */}
       {/* <SimpleFetch /> */}

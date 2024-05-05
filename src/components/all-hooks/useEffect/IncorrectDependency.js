@@ -1,6 +1,9 @@
 /*
 ! Caution when specifying dependencies for useEffect:
-* The dependency array in useEffect should be thought of as a way to inform React about what to monitor for changes. This means it's crucial to include all the state variables and props that the effect depends on. If a variable used in the effect is not included in the dependency array, React will not re-run the effect when that variable changes, which can lead to bugs or unexpected behaviors.
+
+* The dependency array in useEffect should be thought of as a way to inform React about what to monitor for changes. 
+* This means it's crucial to include all the state variables and props that the effect depends on. 
+* If a variable used in the effect is not included in the dependency array, React will not re-run the effect when that variable changes, which can lead to bugs or unexpected behaviors.
 
 ? Common Mistakes:
 * - Excluding variables that affect the operation of the effect.
@@ -21,6 +24,7 @@ function IncorrectDependency() {
     const tick = () => {
         // First method
         // setCount(count + 1);
+        // console.log(count);
 
         // Second method
         setCount((prevCount) => prevCount + 1);
@@ -33,10 +37,8 @@ function IncorrectDependency() {
         doSomething()
 
         console.log('UseEffect called to initialise and start the counter ');
-        const interval = setInterval(tick, 1000);
-        return () => {
-            clearInterval(interval);
-        }
+        setInterval(tick, 1000);
+        // tick();
     }, [someProp])
 
     // }, [count])
@@ -44,7 +46,7 @@ function IncorrectDependency() {
     // Enable above line for method one.
 
     // If we specify the empty array then the useEffect will consider that there is nothing to monitor for rerendering, not even the state variable count. Thus specify the count to monitor or use second method to change the state variable by passing the arrow function to setState method (here setCount). 
-    // In first method of passing the count as dependency the console.log will be done for every second but in second method of passing the function to the setState method.
+    // In first method of passing the count as dependency the console.log will be done for every second but only once in second method of passing the function to the setState method.
 
 
 
@@ -61,87 +63,73 @@ export default IncorrectDependency
 
 
 /*
-Note - If we are calling some function from the useEffect method then the useEffect (with empty array) it will not be  monitoring the changes that are made to props/state in that function therefore rather than just calling a function from useEffect we must define that function inside the useEffect CBF itself. Eg function doSomething()
+? imp notes:
+
+- If the effect depends on variables that are likely to change, such as `count`, those should also be included in the dependency array.
+
+- Alternatively, if an effect should run only once (like componentDidMount), an empty dependency array is used. However, any variable used inside the effect should either be static during the component's lifetime or handled through event handlers or other means that do not require dependency tracking.
+
+- For complex scenarios where part of the effect should run on mount and part should update based on certain variables, consider using multiple useEffects with different dependencies.
+
+- If we are calling some function from the useEffect method then the useEffect (with empty array) it will not be  monitoring the changes that are made to props/state in that function therefore rather than just calling a function from useEffect we must define that function inside the useEffect CBF itself. Eg function doSomething()
 
 Here we may think if there is a code that we want to run ohnly once like the CDM and other piece of code as the CDU (means again and again) Then we can use multiple useEffects in a single component. 
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
-! Caution when specifying dependencies for useEffect:
-* The dependency array in useEffect should be thought of as a way to inform React about what to monitor for changes. This means it's crucial to include all the state variables and props that the effect depends on. If a variable used in the effect is not included in the dependency array, React will not re-run the effect when that variable changes, which can lead to bugs or unexpected behaviors.
+? Guys read this for detailed explanation.
 
-* Common Mistakes:
-* - Excluding variables that affect the operation of the effect.
-* - Incorrect assumptions about how dependencies control the effect execution.
-* - Overlooking the closure behavior in JavaScript where callbacks capture the values at the time of their creation unless they are re-created.
 
-* Key Principle:
-* Always synchronize the effect with its dependencies. If the effect uses any variable that can change over time and is used within the effect, it must be listed in the dependency array.
-*/
+- original IncorrectDependency component, we have set up a timer that increments a count state every second. 
+- The crucial parts to focus on are the setCount usage within the tick function and the dependency array of the useEffect hook.
 
-// import React, { useState, useEffect } from 'react';
+* useState Initialization:
+const [count, setCount] = useState(0);
 
-// function IncorrectDependency() {
-//     const [count, setCount] = useState(0);
-//     const someProp = 0;  // Static value, used as a dependency
+- This initializes the count state with a value of 0.
 
-//     // Function to increment the count
-//     const tick = () => {
-//         // This function uses a callback with the previous state to correctly increment the count
-//         setCount(prevCount => prevCount + 1);
-//     };
+* Tick Function:
+const tick = () => {
+    setCount(count + 1);
+}
 
-//     useEffect(() => {
-//         // Function defined within useEffect to use the captured `someProp` value
-//         function doSomething() {
-//             console.log(someProp);  // This logs the value of `someProp`
-//         }
-//         doSomething();
+- This function is intended to increment the count state by 1 every time it's called.
 
-//         console.log('UseEffect called to initialise and start the counter');
-//         const interval = setInterval(tick, 1000);  // Set up an interval to run `tick` every second
+* useEffect Hook:
+useEffect(() => {
+    function doSomething() {
+        console.log(someProp);
+    }
+    doSomething()
 
-//         // Cleanup function to clear the interval when the component unmounts or dependencies change
-//         return () => {
-//             console.log('Cleanup called');
-//             clearInterval(interval);
-//         };
-//     }, [someProp]);  // Dependency array includes `someProp`
+    console.log('UseEffect called to initialise and start the counter ');
+    const interval = setInterval(tick, 1000);
+    return () => {
+        clearInterval(interval);
+    }
+}, [someProp])
 
-//     // Note: The above effect will only re-run if `someProp` changes, not `count`.
+- This effect is set to run only when someProp changes. Inside, it sets up an interval that calls tick every second.
 
-//     return (
-//         <div>
-//             IncorrectDependency Example
-//             <h3>Timer: {count}</h3>
-//         </div>
-//     );
-// }
+? Issues when we  use only setCount(count +1) instead of a callback function setCount(prevstate=> prevstate +1)
 
-// export default IncorrectDependency;
+- The problem arises due to how closures work in JavaScript combined with the dependencies of the useEffect hook:
 
-/*
-Additional Notes:
-- If the effect depends on variables that are likely to change, such as `count`, those should also be included in the dependency array.
-- Alternatively, if an effect should run only once (like componentDidMount), an empty dependency array is used. However, any variable used inside the effect should either be static during the component's lifetime or handled through event handlers or other means that do not require dependency tracking.
-- For complex scenarios where part of the effect should run on mount and part should update based on certain variables, consider using multiple useEffects with different dependencies.
+- Closure: When wer useEffect runs, it captures the current value of count (which is 0) in the tick function. 
+- This captured value doesn't update on subsequent renders because the tick function itself is not re-created (it's the same function being called repeatedly by setInterval).
+
+- Dependency Array: Since someProp doesn't change and count is not included in the dependency array, React does not re-run the useEffect to update the tick function with the new count value. 
+- Therefore, every call to tick uses the initial count value of 0, effectively trying to set the state to 1 repeatedly.
+
+? Solution Using a Function with setCount
+
+- When we modify the setCount call to use a function:
+setCount(prevCount => prevCount + 1);
+
+- we are now using a functional update. Here’s why this resolves the issue:
+
+* Functional Update: By using a function inside setCount, we are telling React to apply this update based on the previous state, not based on the count value captured in the closure. 
+* This means each call to setCount always correctly increments the latest state value, regardless of what the count value was when the useEffect or tick was defined.
+
 */
