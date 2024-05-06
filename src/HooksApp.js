@@ -27,31 +27,38 @@ import HooksCounter from './components/all-hooks/useState/HooksCounter';
 import HooksCounterTwo from './components/all-hooks/useState/HooksCounterTwo';
 import ObjectToUsestate from './components/all-hooks/useState/ObjectToUsestate';
 import ArrayToUsestate from './components/all-hooks/useState/ArrayToUsestate';
+import CompC from './components/all-hooks/useContext/CompC.js';
+import ComponentB from './components/all-hooks/ReducerAndContext/ComponentB.js';
+import ComponentD from './components/all-hooks/ReducerAndContext/ComponentD.js';
+import ComponentE from './components/all-hooks/ReducerAndContext/ComponentE.js';
+import GrandParent from './components/all-hooks/PropDrilling/GrandParent.js';
+import Child1 from './components/all-hooks/ChildToParent/Child1.js';
+import Parent1 from './components/all-hooks/ChildToParent/Parent1.js';
 // import CompC from './components/all-hooks/useContext/CompC.js';
 
 
-// export const UserContext = React.createContext();
-// export const ChannelContext = React.createContext();
-// export const ReducerContext = React.createContext();
+export const UserContext = React.createContext();
+export const ChannelContext = React.createContext();
+export const ReducerContext = React.createContext();
 
 // Below code is for useReducer + useContext example
-// const initialState = 0;
-// const reducer = (state, action) => {
-//   switch (action) {
-//     case 'increment':
-//       return state + 1;
-//     case 'decrement':
-//       return state - 1;
-//     case 'reset':
-//       return initialState;
-//     default:
-//       return state;
-//   }
-// }
+const initialState = 0;
+const reducer = (count, action) => {
+  switch (action) {
+    case 'increment':
+      return count + 1;
+    case 'decrement':
+      return count - 1;
+    case 'reset':
+      return initialState;
+    default:
+      return count;
+  }
+}
 
 
 function HooksApp() {
-  // const [count, dispatch] = useReducer(reducer, initialState)
+  const [count, dispatch] = useReducer(reducer, initialState)
 
   return (
     <div className="App">
@@ -87,11 +94,11 @@ function HooksApp() {
       {/* <DataFetchingUseEffect /> */}
 
       {/* 13 - useContext -- normal context use and useContext version */}
-      {/* <UserContext.Provider value={'Shubham'}>
-        <ChannelContext.Provider value={'CodeSmith'}>
+      <UserContext.Provider value={'Shubham'}>
+        <ChannelContext.Provider value={'CodeBuddy'}>
           <CompC />
         </ChannelContext.Provider>
-      </UserContext.Provider> */}
+      </UserContext.Provider>
 
       {/* 14 - useReducer -- using reducer for changing the state and conditional rendering */}
       {/* <SimpleUseReducer /> */}
@@ -103,14 +110,18 @@ function HooksApp() {
       {/* <MultipleUseReducer /> */}
 
       {/* 17 - useReducer and useContext -- To implement the global state */}
-      {/* <ReducerContext.Provider value={{ countState: count, countDispatch: dispatch }}>
+      <ReducerContext.Provider value={{ countState: count, countDispatch: dispatch }}>
         <h3> Counter value : {count}</h3>
         <ComponentB />
         <ComponentD />
         <ComponentE />
-        </ReducerContext.Provider> */}
+        </ReducerContext.Provider>
 
+      {/* Props drilling examples */}.
+      <GrandParent/>
 
+      {/* Child to parent communication */}
+      <Parent1/>
 
 
 

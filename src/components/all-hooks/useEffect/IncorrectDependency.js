@@ -27,19 +27,20 @@ function IncorrectDependency() {
         // console.log(count);
 
         // Second method
-        setCount((prevCount) => prevCount + 1);
+        setCount((prevCount) =>  prevCount + 1);
+        console.log(count)
     }
 
     useEffect(() => {
-        function doSomething() {
-            console.log(someProp);
-        }
-        doSomething()
+        // function doSomething() {
+        //     console.log(someProp);
+        // }
+        // doSomething()
 
         console.log('UseEffect called to initialise and start the counter ');
         setInterval(tick, 1000);
         // tick();
-    }, [someProp])
+    }, [])
 
     // }, [count])
 
@@ -132,4 +133,46 @@ setCount(prevCount => prevCount + 1);
 * Functional Update: By using a function inside setCount, we are telling React to apply this update based on the previous state, not based on the count value captured in the closure. 
 * This means each call to setCount always correctly increments the latest state value, regardless of what the count value was when the useEffect or tick was defined.
 
+*/
+
+
+
+/*
+! Different versions of working code
+
+- This one is working because the setTimeout will execute every 1 second once state is updated.
+
+    const tick = () => {
+        setCount(count + 1);
+        console.log(count)
+    }
+
+    useEffect(() => {   
+        setTimeout(tick, 1000);
+    }, [count])
+
+
+    - This onc because the setInterval will run the tick function every second the state changes therefore the tick function gets the new value for count when its changed and useEffect is run again, 
+    
+        const tick = () => {
+            setCount(count + 1);
+            console.log(count)
+        }
+    
+        useEffect(() => {   
+            setInterva;(tick, 1000);
+        }, [count])
+    
+    
+    - This will also do the same but now the tick function will not execute agian and rather depend  on the callback and the current state value available in the setState function.
+    - But if we see carefully we can notice that the console.log will print the count = 0 all the time
+
+        const tick = () => {
+            setCount(prevCount => prevCount + 1);
+            console.log(count)
+        }
+    
+        useEffect(() => {   
+            setInterva;(tick, 1000);
+        }, [])
 */
