@@ -34,6 +34,10 @@ import ComponentE from './components/all-hooks/ReducerAndContext/ComponentE.js';
 import GrandParent from './components/all-hooks/PropDrilling/GrandParent.js';
 import Child1 from './components/all-hooks/ChildToParent/Child1.js';
 import Parent1 from './components/all-hooks/ChildToParent/Parent1.js';
+import SimpleFetch from './components/all-hooks/ReducerFetch/SimpleFetch.js';
+import ComplexFetch from './components/all-hooks/ReducerFetch/ComplexFetch.js';
+import MySimpleFetch from './components/all-hooks/ReducerFetch/MySimpleFetch.js';
+import MyComplexReducer from './components/all-hooks/ReducerFetch/MyComplexReducer.js';
 // import CompC from './components/all-hooks/useContext/CompC.js';
 
 
@@ -94,11 +98,11 @@ function HooksApp() {
       {/* <DataFetchingUseEffect /> */}
 
       {/* 13 - useContext -- normal context use and useContext version */}
-      <UserContext.Provider value={'Shubham'}>
+      {/* <UserContext.Provider value={'Shubham'}>
         <ChannelContext.Provider value={'CodeBuddy'}>
           <CompC />
         </ChannelContext.Provider>
-      </UserContext.Provider>
+      </UserContext.Provider> */}
 
       {/* 14 - useReducer -- using reducer for changing the state and conditional rendering */}
       {/* <SimpleUseReducer /> */}
@@ -110,36 +114,26 @@ function HooksApp() {
       {/* <MultipleUseReducer /> */}
 
       {/* 17 - useReducer and useContext -- To implement the global state */}
-      <ReducerContext.Provider value={{ countState: count, countDispatch: dispatch }}>
+      {/* <ReducerContext.Provider value={{ countState: count, countDispatch: dispatch }}>
         <h3> Counter value : {count}</h3>
         <ComponentB />
         <ComponentD />
         <ComponentE />
-        </ReducerContext.Provider>
+        </ReducerContext.Provider> */}
 
       {/* Props drilling examples */}.
-      <GrandParent/>
+      {/* <GrandParent/> */}
 
       {/* Child to parent communication */}
-      <Parent1/>
-
-
-
-
-
-
-
-
-
-
-
-
+      {/* <Parent1/> */}
 
       {/* 18 - useEffect and useState -- To fetch the data */}
       {/* <SimpleFetch /> */}
+      {/* <MySimpleFetch/> */}
 
       {/* 19 - useReducer and useEffect Fetch -- To fetch the data */}
       {/* <ComplexFetch /> */}
+      <MyComplexReducer/>
 
       {/* 20 - useCallback -- Used to optimize the rendering along with React.memo */}
       {/* <SimpleUseCallback /> */}
