@@ -38,6 +38,11 @@ import SimpleFetch from './components/all-hooks/ReducerFetch/SimpleFetch.js';
 import ComplexFetch from './components/all-hooks/ReducerFetch/ComplexFetch.js';
 import MySimpleFetch from './components/all-hooks/ReducerFetch/MySimpleFetch.js';
 import MyComplexReducer from './components/all-hooks/ReducerFetch/MyComplexReducer.js';
+import SimpleUseCallback from './components/all-hooks/useCallback/SimpleUseCallback.js';
+import CounterDelayMemo from './components/all-hooks/useMemo/CounterDelayMemo.js';
+import Optimize from './components/all-hooks/Optimization/Optimize.js';
+// import FocusInput from './components/all-hooks/useRef/FocusInput.js';
+// import UseRefTimer from './components/all-hooks/useRef/UseRefTimer.js';
 // import CompC from './components/all-hooks/useContext/CompC.js';
 
 
@@ -133,13 +138,15 @@ function HooksApp() {
 
       {/* 19 - useReducer and useEffect Fetch -- To fetch the data */}
       {/* <ComplexFetch /> */}
-      <MyComplexReducer/>
+      {/* <MyComplexReducer/> */}
 
       {/* 20 - useCallback -- Used to optimize the rendering along with React.memo */}
       {/* <SimpleUseCallback /> */}
+        {/* <Optimize/> */}
+
 
       {/* 21 - useMemo -- The unecessary function execution on Re-rendering is prevented */}
-      {/* <CounterDelayMemo /> */}
+      <CounterDelayMemo />
 
       {/* 22 - useRef -- Used to accessed the Dom node of an element on the DOM   */}
       {/* <FocusInput /> */}
