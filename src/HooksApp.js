@@ -41,6 +41,15 @@ import MyComplexReducer from './components/all-hooks/ReducerFetch/MyComplexReduc
 import SimpleUseCallback from './components/all-hooks/useCallback/SimpleUseCallback.js';
 import CounterDelayMemo from './components/all-hooks/useMemo/CounterDelayMemo.js';
 import Optimize from './components/all-hooks/Optimization/Optimize.js';
+import FocusInput from './components/all-hooks/useRef/FocusInput.js';
+import UseRefTimer from './components/all-hooks/useRef/UseRefTimer.js';
+import DocumentTitle2 from './components/all-hooks/CustomHooks/DocumentTitle.js';
+import DocumentTitle from './components/all-hooks/CustomHooks/DocumentTitle2.js';
+import CustomCounter from './components/all-hooks/CustomHooks/CustomCounter.js';
+import { ErrorBoundary } from './components/all-hooks/ErrorBoundry/ErrorBoundry.jsx';
+import ErrorCausing from './components/all-hooks/ErrorBoundry/ErrorCausing.jsx';
+import DocTitle from './components/all-hooks/MyCustomHooks/DocTitle.jsx';
+import CounterUsingHook from './components/all-hooks/MyCustomHooks/CounterUsingHook.js';
 // import FocusInput from './components/all-hooks/useRef/FocusInput.js';
 // import UseRefTimer from './components/all-hooks/useRef/UseRefTimer.js';
 // import CompC from './components/all-hooks/useContext/CompC.js';
@@ -146,7 +155,7 @@ function HooksApp() {
 
 
       {/* 21 - useMemo -- The unecessary function execution on Re-rendering is prevented */}
-      <CounterDelayMemo />
+      {/* <CounterDelayMemo /> */}
 
       {/* 22 - useRef -- Used to accessed the Dom node of an element on the DOM   */}
       {/* <FocusInput /> */}
@@ -155,12 +164,19 @@ function HooksApp() {
       {/* <UseRefTimer /> */}
 
       {/* 24 - Creating custom hooks --  Here the document title hook is created for Setting the tiltle */}
-      {/* <DocumentTitle />
-      <DocumentTitle2 /> */}
+      {/* <DocumentTitle /> */}
+      {/* <DocumentTitle2 /> */}
+      {/* <DocTitle/> */}
 
       {/*  25 - Creating custom counter operation hook */}
-      {/* <CustomCounter />
-      <CustomCounter2 /> */}
+      {/* <CounterUsingHook/> */}
+      {/* <CustomCounter /> */}
+      {/* <CustomCounter2 /> */}
+
+      {/* 26 - ErrorBoundries and the functional component */}
+      <ErrorBoundary>
+        <ErrorCausing />
+      </ErrorBoundary>
 
     </div >
   );
