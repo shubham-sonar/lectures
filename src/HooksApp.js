@@ -112,11 +112,11 @@ function HooksApp() {
       {/* <DataFetchingUseEffect /> */}
 
       {/* 13 - useContext -- normal context use and useContext version */}
-      {/* <UserContext.Provider value={'Shubham'}>
+      <UserContext.Provider value={'Shubham'}>
         <ChannelContext.Provider value={'CodeBuddy'}>
           <CompC />
         </ChannelContext.Provider>
-      </UserContext.Provider> */}
+      </UserContext.Provider>
 
       {/* 14 - useReducer -- using reducer for changing the state and conditional rendering */}
       {/* <SimpleUseReducer /> */}

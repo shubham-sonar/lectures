@@ -13,6 +13,10 @@ import ColorCycle from "./components/class-comp/ColorCycle.js";
 import InlineStylingComponent from "./components/css-style/InlineStylingComponent.js";
 import CSSStylesheetComponent from "./components/css-style/CSSStylesheetComponent.js";
 import HooksApp from "./HooksApp.js";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom"
+import RouterApp from "./react-router/DynamicRouter/RouterApp.js";
+import MyContact from "./react-router/DynamicRouter/MyContact.js";
+import ProtectedApp from "./react-router/ProtectedRoute/ProtectedApp.js";
 
 // Define a functional component called App
 function App() {
@@ -54,8 +58,37 @@ function App() {
           {/* <CSSStylesheetComponent /> */}
 
           {/* All Hooks here */}
-          <HooksApp />
-        </header>
+          {/* <HooksApp /> */}
+
+        {/* React Router DOM version 6*/}
+        {/* Simple Routing */}
+        
+          {/* 
+          <BrowserRouter>
+            <NavLink to="home">Home</NavLink>
+            <NavLink to="contact">contact</NavLink>
+            <NavLink to="contact/ shubham">shubham</NavLink>
+
+            <Routes>
+              <Route path="/home" element={<h1>Home Component</h1>}/>
+              <Route path="/contact" element={<MyContact/>}>
+                <Route path="shubham" element={<h1>8485858585</h1>}/>
+              </Route>
+            </Routes>
+          </BrowserRouter> 
+          */}
+
+          {/* Intermediate Router example with Dynamic Routing */}
+          {/*
+          <BrowserRouter>
+             <RouterApp />
+          </BrowserRouter> 
+          */}
+
+          {/* Protected Route */}
+          <ProtectedApp/>
+
+          </header>
         <div style={{ height: "150px" }}></div>
       </div>
     </div>
