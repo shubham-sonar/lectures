@@ -17,6 +17,8 @@ import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom"
 import RouterApp from "./react-router/DynamicRouter/RouterApp.js";
 import MyContact from "./react-router/DynamicRouter/MyContact.js";
 import ProtectedApp from "./react-router/ProtectedRoute/ProtectedApp.js";
+import RedApp from "./redux-toolkit/ReduxToolkitCounter/RedApp.js";
+import MyTodoApp from "./redux-toolkit/ReduxToolkitCounter/TodoApp/TodoApp.js";
 
 // Define a functional component called App
 function App() {
@@ -86,8 +88,13 @@ function App() {
           */}
 
           {/* Protected Route */}
-          <ProtectedApp/>
+          {/* <ProtectedApp/> */}
 
+          {/* Redux toolkit */}
+          {/* <RedApp/> */}
+          
+          {/* Redux toolkit todo list */}
+          <MyTodoApp/>
           </header>
         <div style={{ height: "150px" }}></div>
       </div>
